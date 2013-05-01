@@ -5,3 +5,4 @@ print hist_file_line_count
 
 hist_text = os.system('cat ~/.bash_history')
 print hist_text
+print len(hist_text)
