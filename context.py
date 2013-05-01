@@ -1,4 +1,5 @@
 import os
+import pdb; pdb.set_trace()
 
 hist_file_line_count = os.system('wc -l ~/.bash_history')
 print hist_file_line_count 
