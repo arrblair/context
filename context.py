@@ -26,6 +26,7 @@ with open('/Users/arrblair/.bash_history') as f:
 
 for element in hist_text:
     if element.startswith('#1'):
+        print element
         hist_text.remove(element)
 # hist_text = open('/Users/arrblair/.bash_history', 'r+')
 
