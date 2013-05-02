@@ -1,11 +1,12 @@
-import os
+import subprocess
 import pdb; pdb.set_trace()
 
-hist_file_line_count = os.system('wc -l ~/.bash_history')
+subprocess.call(['whoami'])
+hist_file_line_count = subprocess.call(['wc ~/.bash_history', '-l'])
 print hist_file_line_count 
 
 hist_text = []
-hist_text = os.system('cat ~/.bash_history')
+hist_text = subprocess.call(['cat ~/.bash_history'])
 print hist_text
 print len(hist_text)
 
