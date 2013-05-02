@@ -1,5 +1,5 @@
 import subprocess
-import pdb; pdb.set_trace()
+# import pdb; pdb.set_trace()
 
 
 # determine who you're using the device as
@@ -20,7 +20,13 @@ print hist_file_line_count
 hist_text = []
 
 # TODO: accomplish this task by reading each line from a file object
-hist_text = subprocess.call('cat ~/.bash_history', shell=True)
+
+# hist_text = subprocess.call('cat ~/.bash_history', shell=True)
+with open('/Users/arrblair/.bash_history') as f:
+    hist_text = f.readlines()
+
+# hist_text = open('/Users/arrblair/.bash_history', 'r+')
+
 print hist_text
 print len(hist_text)
 
