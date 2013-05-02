@@ -11,6 +11,8 @@ hist_file_line_count = hist_file_line_count.split(' ')[0]
 print hist_file_line_count 
 
 hist_text = []
+
+# TODO: accomplish this task by reading each line from a file object
 hist_text = subprocess.call('cat ~/.bash_history', shell=True)
 print hist_text
 print len(hist_text)
