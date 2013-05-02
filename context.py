@@ -2,7 +2,12 @@ import subprocess
 import pdb; pdb.set_trace()
 
 subprocess.call(['whoami'])
-hist_file_line_count = subprocess.call('wc -l ~/.bash_history', shell=True)
+hist_file_line_count = subprocess.Popen('wc -l ~/.bash_history', stdin=None,
+                                        stdout=subprocess.PIPE, shell=True,
+                                        close_fds=True)
+hist_file_line_count = hist_file_line_count.communicate()[0]
+hist_file_line_count = hist_file_line_count.strip()
+hist_file_line_count = hist_file_line_count.split(' ')[0]
 print hist_file_line_count 
 
 hist_text = []
