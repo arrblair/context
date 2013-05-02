@@ -31,5 +31,5 @@ print hist_text
 print len(hist_text)
 
 
-if __name__ == '__main__':
-    main()
+# if __name__ == '__main__':
+    # main()
