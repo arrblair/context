@@ -8,3 +8,7 @@ hist_text = []
 hist_text = os.system('cat ~/.bash_history')
 print hist_text
 print len(hist_text)
+
+
+if __name__ == '__main__':
+    main()
