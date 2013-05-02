@@ -1,6 +1,14 @@
 import subprocess
 import pdb; pdb.set_trace()
 
+
+# determine who you're using the device as
+whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
+                          shell=True, close_fds=True)
+whoami = whoami.communicate()[0]
+print whoami
+
+# determine how long the history file is
 hist_file_line_count = subprocess.Popen('wc -l ~/.bash_history', stdin=None,
                                         stdout=subprocess.PIPE, shell=True,
                                         close_fds=True)
