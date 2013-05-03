@@ -1,6 +1,10 @@
 import subprocess
 import collections
+import time
 # import pdb; pdb.set_trace()
+
+
+# start = 
 
 
 # determine who you're using the device as
@@ -50,10 +54,17 @@ for element in hist_text:
 sorted_tallies = []
 for k, v in c.iteritems():
     sorted_tallies.append((str(v) + ': ' + k))
-    sorted_tallies.sort()
+    sorted = sorted_tallies.sort()
 
-print sorted_tallies 
+print sorted_tallies
 
+print sorted
+
+for element in sorted_tallies:
+    print element
+
+for element in sorted:
+    print element
 
 print 'History contains ' + str(len(hist_text)) + ' entries.'
 
