@@ -35,8 +35,10 @@ for element in hist_text:
 
 # hist_text = open('/Users/arrblair/.bash_history', 'r+')
 
-print hist_text
-print len(hist_text)
+for element in hist_text:
+    print element
+
+print 'History contains ' + str(len(hist_text)) + ' entries.'
 
 
 # if __name__ == '__main__':
