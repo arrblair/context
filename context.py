@@ -25,7 +25,6 @@ with open('/Users/arrblair/.bash_history') as f:
    hist_text = f.readlines()
 
 i=1
-
 for element in hist_text:
     if element.startswith('#1'):
         print i
@@ -35,8 +34,11 @@ for element in hist_text:
 
 # hist_text = open('/Users/arrblair/.bash_history', 'r+')
 
+i=1
 for element in hist_text:
+    print i
     print element
+    i+=1
 
 print 'History contains ' + str(len(hist_text)) + ' entries.'
 
