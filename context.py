@@ -1,4 +1,5 @@
 import subprocess
+import collections
 # import pdb; pdb.set_trace()
 
 
@@ -33,11 +34,13 @@ for element in hist_text:
         i+=1
 
 # hist_text = open('/Users/arrblair/.bash_history', 'r+')
+c = collection.Counter()
 
 i=1
 for element in hist_text:
     print i
     print element
+    c.update(element.split())
     i+=1
 
 print 'History contains ' + str(len(hist_text)) + ' entries.'
