@@ -33,8 +33,10 @@ for element in hist_text:
         hist_text.remove(element)
         # i+=1
 
+
 # hist_text = open('/Users/arrblair/.bash_history', 'r+')
 
+# add element in hist_text to collection counter
 c = collections.Counter()
 i=1
 for element in hist_text:
@@ -44,10 +46,13 @@ for element in hist_text:
     i+=1
 
 
+# create a sorted list from hist_text 
 sorted_tallies = []
 for k, v in c.iteritems():
     sorted_tallies.append((str(v) + ': ' + k))
-    sortable_collection_list.sort()
+    sorted_tallies.sort()
+
+print sorted_tallies 
 
 
 print 'History contains ' + str(len(hist_text)) + ' entries.'
