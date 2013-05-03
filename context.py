@@ -52,6 +52,7 @@ for element in hist_text:
 
 # create a sorted list from hist_text 
 sorted_tallies = []
+sorted = []
 for k, v in c.iteritems():
     sorted_tallies.append((str(v) + ': ' + k))
     sorted = sorted_tallies.sort()
@@ -68,6 +69,6 @@ for element in sorted:
 
 print 'History contains ' + str(len(hist_text)) + ' entries.'
 
-
+#
 # if __name__ == '__main__':
     # main()
