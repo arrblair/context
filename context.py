@@ -28,20 +28,27 @@ with open('/Users/arrblair/.bash_history') as f:
 i=1
 for element in hist_text:
     if element.startswith('#1'):
-        print i
-        print element
+        # print i
+        # print element
         hist_text.remove(element)
-        i+=1
+        # i+=1
 
 # hist_text = open('/Users/arrblair/.bash_history', 'r+')
-c = collection.Counter()
 
+c = collections.Counter()
 i=1
 for element in hist_text:
     print i
     print element
     c.update(element.split())
     i+=1
+
+
+sorted_tallies = []
+for k, v in c.iteritems():
+    sorted_tallies.append((str(v) + ':' + k))
+    sortable_collection_list.sort()
+
 
 print 'History contains ' + str(len(hist_text)) + ' entries.'
 
