@@ -46,7 +46,7 @@ for element in hist_text:
 
 sorted_tallies = []
 for k, v in c.iteritems():
-    sorted_tallies.append((str(v) + ':' + k))
+    sorted_tallies.append((str(v) + ': ' + k))
     sortable_collection_list.sort()
 
 
