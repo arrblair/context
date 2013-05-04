@@ -71,6 +71,8 @@ for element in sorted_tallies:
         number = int(element[0])
     else:
         number = int(element[0:slice_number])
+    slice_number = slice_number + 2
+    element = element[slice_number:]
     sorter_dict[number] = element
 
 
