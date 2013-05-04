@@ -58,10 +58,17 @@ for k, v in c.iteritems():
 
 print sorted_tallies
 
-
 for element in sorted_tallies:
     print element
 
+sorter_dict = {}
+colon_index = element.find(':')
+slice_number = colon_index - 1
+if slice_number == 0:
+    number = int(element[0])
+else:
+    number = int(element[0]:slice_number])
+sorter_dict[number] = element
 
 
 # try:
