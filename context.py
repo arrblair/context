@@ -63,9 +63,10 @@ for element in sorted_tallies:
 
 sorter_dict = {}
 
-def sorter():
+for element in sorted_tallies:
     colon_index = element.find(':')
-    slice_number = colon_index - 1
+    # slice_number = colon_index - 1
+    slice_number = colon_index
     if slice_number == 0:
         number = int(element[0])
     else:
