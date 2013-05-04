@@ -23,8 +23,6 @@ hist_line_count = hist_line_count.split(' ')[0]
 print hist_line_count 
 
 hist_text = []
-
-
 # hist_text = subprocess.call('cat ~/.bash_history', shell=True)
 with open('/Users/arrblair/.bash_history') as f:
    hist_text = f.readlines()
@@ -75,15 +73,6 @@ for element in sorted_tallies:
     slice_number = slice_number + 2
     element = element[slice_number:]
     sorter_dict[number] = element
-
-
-# try:
-    # for element in sorted:
-        # print element
-
-# except Exception as e:
-    # print e
-    # print e.__dict__
 
 print 'History contains ' + str(len(hist_text)) + ' entries.'
 
