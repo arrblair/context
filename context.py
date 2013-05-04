@@ -55,17 +55,22 @@ sorted_tallies = []
 sorted = []
 for k, v in c.iteritems():
     sorted_tallies.append((str(v) + ': ' + k))
-    sorted = sorted_tallies.sort()
 
 print sorted_tallies
 
-print sorted
 
 for element in sorted_tallies:
     print element
 
-for element in sorted:
-    print element
+
+
+# try:
+    # for element in sorted:
+        # print element
+
+# except Exception as e:
+    # print e
+    # print e.__dict__
 
 print 'History contains ' + str(len(hist_text)) + ' entries.'
 
