@@ -31,13 +31,10 @@ with open('/Users/arrblair/.bash_history') as f:
 i=1
 for element in hist_text:
     if element.startswith('#1'):
-        # print i
-        # print element
+        print i
+        print element
         hist_text.remove(element)
-        # i+=1
-
-
-# hist_text = open('/Users/arrblair/.bash_history', 'r+')
+        i+=1
 
 # add element in hist_text to collection counter
 c = collections.Counter()
