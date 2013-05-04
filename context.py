@@ -14,7 +14,7 @@ whoami = whoami.communicate()[0]
 print whoami
 
 # determine how long the history file is
-histline_count = subprocess.Popen('wc -l ~/.bash_history', stdin=None,
+hist_line_count = subprocess.Popen('wc -l ~/.bash_history', stdin=None,
                                         stdout=subprocess.PIPE, shell=True,
                                         close_fds=True)
 hist_line_count = hist_line_count.communicate()[0]
