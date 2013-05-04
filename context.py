@@ -58,11 +58,12 @@ for k, v in c.iteritems():
 
 print sorted_tallies
 
+# this is just printing the unordered elements in sorted_tallies, 1 per line
 for element in sorted_tallies:
     print element
 
+# this takes sorted tallies and makes them sortable
 sorter_dict = {}
-
 for element in sorted_tallies:
     colon_index = element.find(':')
     # slice_number = colon_index - 1
