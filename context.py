@@ -11,6 +11,7 @@ import time
 whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
                           shell=True, close_fds=True)
 whoami = whoami.communicate()[0]
+whoami = whoami[:8]
 print whoami
 
 # determine how long the history file is
@@ -25,7 +26,7 @@ def hist_line_counter():
 
 hist_text = []
 # hist_text = subprocess.call('cat ~/.bash_history', shell=True)
-with open('/Users/arrblair/.bash_history') as f:
+with open('/Users/%s/.bash_history' % whoami) as f:
     hist_text = f.readlines()
 
 i=1
