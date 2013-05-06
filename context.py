@@ -3,9 +3,9 @@ import collections
 import time
 # import pdb; pdb.set_trace()
 
+
 # TODO(arrblair): profile this script at somepoint & make it sing
 # start = 
-
 
 # determine who you're using the device as
 def get_user_name():
@@ -38,27 +38,31 @@ def read_history_file():
         i=1
         for element in hist_text:
             if element.startswith('#1'):
-                print i
-                print element
+                # print i
+                # print element
                 hist_text.remove(element)
                 i+=1
             else:
-                print 'DOES NOT START WITH #1: VERY GOOOD'
-                print i
-                print element
+                # print 'DOES NOT START WITH #1: VERY GOOOD'
+                # print i
+                # print element
                 i+=1
         return hist_text 
 
 hist_text = read_history_file()
 
 # add element in hist_text to collection counter
-c = collections.Counter()
-i=1
-for element in hist_text:
-    print i
-    print element
-    c.update(element.split())
-    i+=1
+def create_collection_counter():
+    c = collections.Counter()
+    i=1
+    for element in hist_text:
+        print i
+        print element
+        c.update(element.split())
+        i+=1
+    return c
+
+c = create_collection_counter()
 
 
 # create a sorted list from hist_text 
