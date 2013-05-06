@@ -1,7 +1,7 @@
 import subprocess
 import collections
 import time
-import pdb; pdb.set_trace()
+# import pdb; pdb.set_trace()
 
 # TODO(arrblair): profile this script at somepoint & make it sing
 # start = 
@@ -30,17 +30,28 @@ def hist_line_counter():
     print hist_line_count 
 
 hist_text = []
-# hist_text = subprocess.call('cat ~/.bash_history', shell=True)
-with open('/Users/%s/.bash_history' % whoami) as f:
-    hist_text = f.readlines()
 
-i=1
-for element in hist_text:
-    if element.startswith('#1'):
-        print i
-        print element
-        hist_text.remove(element)
-        i+=1
+# hist_text = subprocess.call('cat ~/.bash_history', shell=True)
+def read_history_file():
+    # import pdb; pdb.set_trace()
+    # hist_text = []
+    with open('/Users/%s/.bash_history' % whoami) as f:
+        hist_text = f.readlines()
+        i=1
+        for element in hist_text:
+            if element.startswith('#1'):
+                print i
+                print element
+                hist_text.remove(element)
+                i+=1
+            else:
+                print 'DOES NOT START WITH #1: VERY GOOOD'
+                print i
+                print element
+                i+=1
+
+
+hist_text = read_history_file()
 
 # add element in hist_text to collection counter
 c = collections.Counter()
