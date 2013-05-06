@@ -7,84 +7,87 @@ import time
 # TODO(arrblair): profile this script at somepoint & make it sing
 # start = 
 
-# determine who you're using the device as
-def get_user_name():
-    whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
-                              shell=True, close_fds=True)
-    whoami = whoami.communicate()[0]
-    if '\n' in whoami:
-        newline_index = whoami.find('\n')
-        whoami = whoami[:newline_index]
-        return whoami
 
-whoami = get_user_name()
+class Context:
 
-# determine how long the history file is
-def hist_line_counter():
-    hist_line_count = subprocess.Popen('wc -l ~/.bash_history', stdin=None,
-                                            stdout=subprocess.PIPE, shell=True,
-                                            close_fds=True)
-    hist_line_count = hist_line_count.communicate()[0]
-    hist_line_count = hist_line_count.strip()
-    hist_line_count = hist_line_count.split(' ')[0]
-    print hist_line_count 
+    # determine who you're using the device as
+    def get_user_name():
+        whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
+                                  shell=True, close_fds=True)
+        whoami = whoami.communicate()[0]
+        if '\n' in whoami:
+            newline_index = whoami.find('\n')
+            whoami = whoami[:newline_index]
+            return whoami
 
-# hist_text = subprocess.call('cat ~/.bash_history', shell=True)
-def read_history_file():
-    # import pdb; pdb.set_trace()
-    hist_text = []
-    with open('/Users/%s/.bash_history' % whoami) as f:
-        hist_text = f.readlines()
+# whoami = get_user_name()
+get_user_name()
+
+    # determine how long the history file is
+    def hist_line_counter():
+        hist_line_count = subprocess.Popen('wc -l ~/.bash_history', stdin=None,
+                                                stdout=subprocess.PIPE, shell=True,
+                                                close_fds=True)
+        hist_line_count = hist_line_count.communicate()[0]
+        hist_line_count = hist_line_count.strip()
+        hist_line_count = hist_line_count.split(' ')[0]
+        print hist_line_count 
+
+    # hist_text = subprocess.call('cat ~/.bash_history', shell=True)
+    def read_history_file():
+        # import pdb; pdb.set_trace()
+        hist_text = []
+        with open('/Users/%s/.bash_history' % whoami) as f:
+            hist_text = f.readlines()
+            i=1
+            for element in hist_text:
+                if element.startswith('#1'):
+                    # print i
+                    # print element
+                    hist_text.remove(element)
+                    i+=1
+                else:
+                    # print 'DOES NOT START WITH #1: VERY GOOOD'
+                    # print i
+                    # print element
+                    i+=1
+            return hist_text 
+
+# hist_text = read_history_file()
+read_history_file()
+
+    # add element in hist_text to collection counter
+    def create_collection_counter():
+        c = collections.Counter()
         i=1
         for element in hist_text:
-            if element.startswith('#1'):
-                # print i
-                # print element
-                hist_text.remove(element)
-                i+=1
-            else:
-                # print 'DOES NOT START WITH #1: VERY GOOOD'
-                # print i
-                # print element
-                i+=1
-        return hist_text 
+            print i
+            print element
+            c.update(element.split())
+            i+=1
+        return c
 
-hist_text = read_history_file()
+# c = create_collection_counter()
+create_collection_counter()
 
-# add element in hist_text to collection counter
-def create_collection_counter():
-    c = collections.Counter()
-    i=1
-    for element in hist_text:
-        print i
-        print element
-        c.update(element.split())
-        i+=1
-    return c
-
-c = create_collection_counter()
-
-
-# create a sorted list from hist_text 
-def sort_collection():
-    sorted_tallies = []
-    sorted = []
-    for k, v in c.iteritems():
-        sorted_tallies.append((str(v) + ': ' + k))
-    print sorted_tallies
-    print 8*'\n', 100*'L'
-    print 'PRINT SORTED TALLIES RAN (LINE 74)'
-    for element in sorted_tallies:
-        print element
-    print 8*'\n', 100*'M'
-    print 'PRINT ELEMENT IN SORTED TALLIES LOOP HAS RAN'
+    # create a sorted list from hist_text 
+    def sort_collection():
+        sorted_tallies = []
+        sorted = []
+        for k, v in c.iteritems():
+            sorted_tallies.append((str(v) + ': ' + k))
+        print sorted_tallies
+        print 8*'\n', 100*'L'
+        print 'PRINT SORTED TALLIES RAN (LINE 74)'
+        for element in sorted_tallies:
+            print element
+        print 8*'\n', 100*'M'
+        print 'PRINT ELEMENT IN SORTED TALLIES LOOP HAS RAN'
     return sorted_tallies 
 
-sorted_tallies = sort_collection()
+# sorted_tallies = sort_collection()
+sort_collection()
 
-# this is just printing the unordered elements in sorted_tallies, 1 per line
-
-# this takes sorted tallies and makes them sortable
 sorter_dict = {}
 for element in sorted_tallies:
     colon_index = element.find(':')
