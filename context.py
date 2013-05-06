@@ -3,7 +3,7 @@ import collections
 import time
 import pdb; pdb.set_trace()
 
-
+# TODO(arrblair): profile this script at somepoint & make it sing
 # start = 
 
 
@@ -13,7 +13,6 @@ whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
 whoami = whoami.communicate()[0]
 
 if '\n' in whoami:
-    
     newline_index = whoami.find('\n')
     whoami = whoami[:newline_index]
     print whoami
