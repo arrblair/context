@@ -8,14 +8,16 @@ import pdb; pdb.set_trace()
 
 
 # determine who you're using the device as
-whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
-                          shell=True, close_fds=True)
-whoami = whoami.communicate()[0]
+def get_user_name():
+    whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
+                              shell=True, close_fds=True)
+    whoami = whoami.communicate()[0]
+    if '\n' in whoami:
+        newline_index = whoami.find('\n')
+        whoami = whoami[:newline_index]
+        return whoami
 
-if '\n' in whoami:
-    newline_index = whoami.find('\n')
-    whoami = whoami[:newline_index]
-    print whoami
+whoami = get_user_name()
 
 # determine how long the history file is
 def hist_line_counter():
