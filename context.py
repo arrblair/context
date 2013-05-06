@@ -29,12 +29,10 @@ def hist_line_counter():
     hist_line_count = hist_line_count.split(' ')[0]
     print hist_line_count 
 
-hist_text = []
-
 # hist_text = subprocess.call('cat ~/.bash_history', shell=True)
 def read_history_file():
     # import pdb; pdb.set_trace()
-    # hist_text = []
+    hist_text = []
     with open('/Users/%s/.bash_history' % whoami) as f:
         hist_text = f.readlines()
         i=1
@@ -49,7 +47,7 @@ def read_history_file():
                 print i
                 print element
                 i+=1
-
+        return hist_text 
 
 hist_text = read_history_file()
 
