@@ -11,7 +11,7 @@ import time
 class Context:
 
     # determine who you're using the device as
-    def get_user_name():
+    def get_user_name(self):
         whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
                                   shell=True, close_fds=True)
         whoami = whoami.communicate()[0]
@@ -20,11 +20,9 @@ class Context:
             whoami = whoami[:newline_index]
             return whoami
 
-# whoami = get_user_name()
-get_user_name()
 
     # determine how long the history file is
-    def hist_line_counter():
+    def hist_line_counter(self):
         hist_line_count = subprocess.Popen('wc -l ~/.bash_history', stdin=None,
                                                 stdout=subprocess.PIPE, shell=True,
                                                 close_fds=True)
@@ -34,7 +32,7 @@ get_user_name()
         print hist_line_count 
 
     # hist_text = subprocess.call('cat ~/.bash_history', shell=True)
-    def read_history_file():
+    def read_history_file(self):
         # import pdb; pdb.set_trace()
         hist_text = []
         with open('/Users/%s/.bash_history' % whoami) as f:
@@ -53,11 +51,9 @@ get_user_name()
                     i+=1
             return hist_text 
 
-# hist_text = read_history_file()
-read_history_file()
 
     # add element in hist_text to collection counter
-    def create_collection_counter():
+    def create_collection_counter(self):
         c = collections.Counter()
         i=1
         for element in hist_text:
@@ -67,11 +63,9 @@ read_history_file()
             i+=1
         return c
 
-# c = create_collection_counter()
-create_collection_counter()
 
     # create a sorted list from hist_text 
-    def sort_collection():
+    def sort_collection(self):
         sorted_tallies = []
         sorted = []
         for k, v in c.iteritems():
@@ -83,10 +77,8 @@ create_collection_counter()
             print element
         print 8*'\n', 100*'M'
         print 'PRINT ELEMENT IN SORTED TALLIES LOOP HAS RAN'
-    return sorted_tallies 
+        return sorted_tallies 
 
-# sorted_tallies = sort_collection()
-sort_collection()
 
 sorter_dict = {}
 for element in sorted_tallies:
@@ -102,6 +94,27 @@ for element in sorted_tallies:
     sorter_dict[number] = element
 
 print 'History contains ' + str(len(hist_text)) + ' entries.'
+
+
+
+
+
+
+# whoami = get_user_name()
+get_user_name()
+
+
+# hist_text = read_history_file()
+read_history_file()
+
+
+# c = create_collection_counter()
+create_collection_counter()
+
+
+# sorted_tallies = sort_collection()
+sort_collection()
+
 
 #
 # if __name__ == '__main__':
