@@ -1,7 +1,7 @@
 import subprocess
 import collections
 import time
-# import pdb; pdb.set_trace()
+import pdb; pdb.set_trace()
 
 
 # start = 
@@ -11,8 +11,12 @@ import time
 whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
                           shell=True, close_fds=True)
 whoami = whoami.communicate()[0]
-whoami = whoami[:8]
-print whoami
+
+if '\n' in whoami:
+    
+    newline_index = whoami.find('\n')
+    whoami = whoami[:newline_index]
+    print whoami
 
 # determine how long the history file is
 def hist_line_counter():
