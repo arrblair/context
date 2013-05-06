@@ -66,16 +66,23 @@ c = create_collection_counter()
 
 
 # create a sorted list from hist_text 
-sorted_tallies = []
-sorted = []
-for k, v in c.iteritems():
-    sorted_tallies.append((str(v) + ': ' + k))
+def sort_collection():
+    sorted_tallies = []
+    sorted = []
+    for k, v in c.iteritems():
+        sorted_tallies.append((str(v) + ': ' + k))
+    print sorted_tallies
+    print 8*'\n', 100*'L'
+    print 'PRINT SORTED TALLIES RAN (LINE 74)'
+    for element in sorted_tallies:
+        print element
+    print 8*'\n', 100*'M'
+    print 'PRINT ELEMENT IN SORTED TALLIES LOOP HAS RAN'
+    return sorted_tallies 
 
-print sorted_tallies
+sorted_tallies = sort_collection()
 
 # this is just printing the unordered elements in sorted_tallies, 1 per line
-for element in sorted_tallies:
-    print element
 
 # this takes sorted tallies and makes them sortable
 sorter_dict = {}
