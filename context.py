@@ -94,11 +94,11 @@ class Context(object):
 
 
 # test this thing out, TODO(arrblair): MOVE TO A TEST SCRIPT
-contx = Context()
-contx.get_user_name()
-contx.read_history_file()
-contx.create_collection_counter()
-contx.sort_collection()
+# contx = Context()
+# contx.get_user_name()
+# contx.read_history_file()
+# contx.create_collection_counter()
+# contx.sort_collection()
 
 print 'History contains ' + str(len(contx.read_history_file())) + ' entries.'
 
