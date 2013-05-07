@@ -9,8 +9,8 @@ import time
 
 
 class Context(object):
-    def __init__(self):
-        self.whoami = self.get_user_name()
+    # def __init__(self):
+        # self.whoami = self.get_user_name()
 
     # add element in hist_text to collection counter
     def create_collection_counter(self):
@@ -100,7 +100,7 @@ class Context(object):
 # contx.create_collection_counter()
 # contx.sort_collection()
 
-print 'History contains ' + str(len(contx.read_history_file())) + ' entries.'
+# print 'History contains ' + str(len(hist_line_counter())) + ' entries.'
 
 
 # if __name__ == '__main__':
