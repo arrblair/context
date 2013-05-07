@@ -1,7 +1,6 @@
 import collections
 import subprocess
 import time
-# import pdb; pdb.set_trace()
 
 
 # TODO(arrblair): profile this script at somepoint & make it sing
@@ -45,7 +44,6 @@ class Context(object):
         print 'History contains ' + str(len(self.hist_line_counter())) + ' entries.'
 
     def read_history_file(self):
-        # import pdb; pdb.set_trace()
         hist_text = []
         with open('/Users/%s/.bash_history' % self.whoami) as f:
             hist_text = f.readlines()
