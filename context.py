@@ -1,5 +1,5 @@
-import subprocess
 import collections
+import subprocess
 import time
 # import pdb; pdb.set_trace()
 
@@ -12,7 +12,19 @@ class Context():
     def __init__(self):
         self.whoami = self.get_user_name()
 
-    # determine who you're using the device as
+    # add element in hist_text to collection counter
+    def create_collection_counter(self):
+        c = collections.Counter()
+        i=1
+        print type(self.read_history_file)
+        for element in self.read_history_file():
+            print i
+            print element
+            c.update(element.split())
+            i+=1
+        return c
+
+    # user_name is whoever you're logged into bash as
     def get_user_name(self):
         whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
                                   shell=True, close_fds=True)
@@ -22,8 +34,6 @@ class Context():
             whoami = whoami[:newline_index]
             return whoami
 
-
-    # determine how long the history file is
     def hist_line_counter(self):
         hist_line_count = subprocess.Popen('wc -l ~/.bash_history', stdin=None,
                                                 stdout=subprocess.PIPE, shell=True,
@@ -32,8 +42,8 @@ class Context():
         hist_line_count = hist_line_count.strip()
         hist_line_count = hist_line_count.split(' ')[0]
         print hist_line_count 
+        print 'History contains ' + str(len(self.hist_line_counter())) + ' entries.'
 
-    # hist_text = subprocess.call('cat ~/.bash_history', shell=True)
     def read_history_file(self):
         # import pdb; pdb.set_trace()
         hist_text = []
@@ -53,20 +63,6 @@ class Context():
                     i+=1
             return hist_text 
 
-
-    # add element in hist_text to collection counter
-    def create_collection_counter(self):
-        c = collections.Counter()
-        i=1
-        print type(self.read_history_file)
-        for element in self.read_history_file():
-            print i
-            print element
-            c.update(element.split())
-            i+=1
-        return c
-
-
     # create a sorted list from hist_text 
     def sort_collection(self):
         sorted_tallies = []
@@ -83,12 +79,10 @@ class Context():
         print 'PRINT ELEMENT IN SORTED TALLIES LOOP HAS RAN'
         return sorted_tallies 
 
-
     def sorter_dict(self):
         sorter_dict = {}
         for element in sorted_tallies:
             colon_index = element.find(':')
-            # slice_number = colon_index - 1
             slice_number = colon_index
             if slice_number == 0:
                 number = int(element[0])
@@ -99,22 +93,11 @@ class Context():
             sorter_dict[number] = element
 
 
+# test this thing out, TODO(arrblair): MOVE TO A TEST SCRIPT
 contx = Context()
-
-
-# whoami = get_user_name()
 contx.get_user_name()
-
-
-# hist_text = read_history_file()
 contx.read_history_file()
-
-
-# c = create_collection_counter()
 contx.create_collection_counter()
-
-
-# sorted_tallies = sort_collection()
 contx.sort_collection()
 
 print 'History contains ' + str(len(contx.read_history_file())) + ' entries.'
