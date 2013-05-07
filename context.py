@@ -8,7 +8,7 @@ import time
 # start = 
 
 
-class Context():
+class Context(Object):
     def __init__(self):
         self.whoami = self.get_user_name()
 
