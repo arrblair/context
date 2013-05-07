@@ -9,3 +9,5 @@ TODO(Ryan):
 - Add docstrings to class and methods.
 
 - Combine create_collection && sort_collection methods.
+
+- Map out which order in which methods need to be ran such that each could be called independently on an instance and still work correctly, then implement this. 
