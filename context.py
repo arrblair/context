@@ -58,7 +58,8 @@ class Context():
     def create_collection_counter(self):
         c = collections.Counter()
         i=1
-        for element in self.read_history_file:
+        print type(self.read_history_file)
+        for element in self.read_history_file():
             print i
             print element
             c.update(element.split())
@@ -70,7 +71,8 @@ class Context():
     def sort_collection(self):
         sorted_tallies = []
         sorted = []
-        for k, v in c.iteritems():
+        collection_counter = self.create_collection_counter() 
+        for k, v in collection_counter.iteritems():
             sorted_tallies.append((str(v) + ': ' + k))
         print sorted_tallies
         print 8*'\n', 100*'L'
@@ -115,10 +117,8 @@ contx.create_collection_counter()
 # sorted_tallies = sort_collection()
 contx.sort_collection()
 
-
 print 'History contains ' + str(len(contx.read_history_file())) + ' entries.'
 
 
-#
 # if __name__ == '__main__':
     # main()
