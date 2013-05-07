@@ -7,3 +7,5 @@ TODO(Ryan):
 - Parse timestamps of those commands and graph their usage over time (probably via Graphite or something similar). Flip on timestamping in .bash_history if it's not activated. Dig deeper into various commands (e.g. ssh, scp, make). 
 
 - Add docstrings to class and methods.
+
+- Combine create_collection && sort_collection methods.
