@@ -8,11 +8,12 @@ import time
 
 
 class Context(object):
+    """Methods to run on an unfamiliar box to provide contextualizing insight on it's usage"""
     # def __init__(self):
         # self.whoami = self.get_user_name()
 
-    # add element in hist_text to collection counter
     def create_collection_counter(self):
+    """add element in hist_text to collection counter"""
         c = collections.Counter()
         i=1
         print type(self.read_history_file)
@@ -23,8 +24,8 @@ class Context(object):
             i+=1
         return c
 
-    # user_name is whoever you're logged into bash as
     def get_user_name(self):
+    """user_name is whoever you're logged into bash as"""
         whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
                                   shell=True, close_fds=True)
         whoami = whoami.communicate()[0]
