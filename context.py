@@ -13,7 +13,7 @@ class Context(object):
         # self.whoami = self.get_user_name()
 
     def create_collection_counter(self):
-    """Add element in hist_text to collection counter."""
+        """Add element in hist_text to collection counter."""
         c = collections.Counter()
         i=1
         print type(self.read_history_file)
@@ -25,7 +25,7 @@ class Context(object):
         return c
 
     def get_user_name(self):
-    """User_name is whoever you're logged into bash as."""
+        """User_name is whoever you're logged into bash as."""
         whoami = subprocess.Popen('whoami', stdin=None, stdout=subprocess.PIPE,
                                   shell=True, close_fds=True)
         whoami = whoami.communicate()[0]
@@ -62,8 +62,8 @@ class Context(object):
                     i+=1
             return hist_text 
 
-    # create a sorted list from hist_text 
     def sort_collection(self):
+        """Create a sorted list from hist_text."""
         sorted_tallies = []
         sorted = []
         collection_counter = self.create_collection_counter() 
@@ -80,16 +80,23 @@ class Context(object):
 
     def sorter_dict(self):
         sorter_dict = {}
-        for element in sorted_tallies:
-            colon_index = element.find(':')
-            slice_number = colon_index
-            if slice_number == 0:
-                number = int(element[0])
-            else:
-                number = int(element[0:slice_number])
-            slice_number = slice_number + 2
-            element = element[slice_number:]
-            sorter_dict[number] = element
+        try:
+            if sorted_tallies in locals():
+                print "HERE SHE IS"
+                for element in sorted_tallies:
+                    colon_index = element.find(':')
+                    slice_number = colon_index
+                    if slice_number == 0:
+                        number = int(element[0])
+                    else:
+                        number = int(element[0:slice_number])
+                        slice_number = slice_number + 2
+                        element = element[slice_number:]
+                        sorter_dict[number] = element
+                    return sorter_dict
+        except NameError as e:
+            sorted_tallies = self.sort_collection()
+            sorter_dict()
 
 
 # test this thing out, TODO(arrblair): MOVE TO A TEST SCRIPT
