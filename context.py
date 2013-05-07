@@ -8,7 +8,9 @@ import time
 # start = 
 
 
-class Context:
+class Context():
+    def __init__(self):
+        self.whoami = self.get_user_name()
 
     # determine who you're using the device as
     def get_user_name(self):
@@ -35,7 +37,7 @@ class Context:
     def read_history_file(self):
         # import pdb; pdb.set_trace()
         hist_text = []
-        with open('/Users/%s/.bash_history' % whoami) as f:
+        with open('/Users/%s/.bash_history' % self.whoami) as f:
             hist_text = f.readlines()
             i=1
             for element in hist_text:
@@ -56,7 +58,7 @@ class Context:
     def create_collection_counter(self):
         c = collections.Counter()
         i=1
-        for element in hist_text:
+        for element in self.read_history_file:
             print i
             print element
             c.update(element.split())
@@ -80,40 +82,41 @@ class Context:
         return sorted_tallies 
 
 
-sorter_dict = {}
-for element in sorted_tallies:
-    colon_index = element.find(':')
-    # slice_number = colon_index - 1
-    slice_number = colon_index
-    if slice_number == 0:
-        number = int(element[0])
-    else:
-        number = int(element[0:slice_number])
-    slice_number = slice_number + 2
-    element = element[slice_number:]
-    sorter_dict[number] = element
-
-print 'History contains ' + str(len(hist_text)) + ' entries.'
-
+    def sorter_dict(self):
+        sorter_dict = {}
+        for element in sorted_tallies:
+            colon_index = element.find(':')
+            # slice_number = colon_index - 1
+            slice_number = colon_index
+            if slice_number == 0:
+                number = int(element[0])
+            else:
+                number = int(element[0:slice_number])
+            slice_number = slice_number + 2
+            element = element[slice_number:]
+            sorter_dict[number] = element
 
 
-
+contx = Context()
 
 
 # whoami = get_user_name()
-get_user_name()
+contx.get_user_name()
 
 
 # hist_text = read_history_file()
-read_history_file()
+contx.read_history_file()
 
 
 # c = create_collection_counter()
-create_collection_counter()
+contx.create_collection_counter()
 
 
 # sorted_tallies = sort_collection()
-sort_collection()
+contx.sort_collection()
+
+
+print 'History contains ' + str(len(contx.read_history_file())) + ' entries.'
 
 
 #
