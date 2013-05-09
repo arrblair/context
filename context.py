@@ -62,6 +62,7 @@ class Context(object):
                     i+=1
             return hist_text 
 
+
     def sort_collection(self):
         """Create a sorted list from hist_text."""
         sorted_tallies = []
