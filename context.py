@@ -1,7 +1,6 @@
 import collections
 import subprocess
-import time
-
+from datetime import datetime
 
 # TODO(arrblair): profile this script at somepoint & make it sing
 # start = 
@@ -61,7 +60,6 @@ class Context(object):
                     # print element
                     i+=1
             return hist_text 
-
 
     def sort_collection(self):
         """Create a sorted list from hist_text."""
