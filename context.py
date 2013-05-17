@@ -112,8 +112,10 @@ class Context(object):
 
 
 # stop = datetime.now().strftime("%Y-%m-%d %H:%M:%S") 
-stop_time = time.time() - start_time
-print stop_time, "seconds"
+# stop_time = time.time() - start_time
+# print stop_time, "seconds"
+time.sleep(3)
+print time.time() - start_time
 
 
 
