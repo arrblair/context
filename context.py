@@ -1,9 +1,12 @@
 import collections
 import subprocess
 from datetime import datetime
+import time
 
-# TODO(arrblair): profile this script at somepoint & make it sing
-# start = 
+# TODO(arrblair): profile this script at some point & make it sing
+
+# start = datetime.now().strftime("%Y-%m-%d %H:%M") 
+start_time = time.time()
 
 
 class Context(object):
@@ -106,6 +109,14 @@ class Context(object):
 # contx.sort_collection()
 
 # print 'History contains ' + str(len(hist_line_counter())) + ' entries.'
+
+
+# stop = datetime.now().strftime("%Y-%m-%d %H:%M:%S") 
+stop_time = time.time() - start_time
+print stop_time, "seconds"
+
+
+
 
 
 # if __name__ == '__main__':
