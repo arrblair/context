@@ -16,3 +16,5 @@ TODO(Ryan):
 - Map out which order in which methods need to be ran such that each could be called independently on an instance and still work correctly, then implement this. 
 
 
+-e 
+
